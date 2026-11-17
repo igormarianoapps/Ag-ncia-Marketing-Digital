@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Traço Nítido · Estúdio Digital</title>
-<meta name="description" content="Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular. Goiânia e região.">
+<meta name="description" content="Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular. Atendimento em todo o Brasil, com base em Goiânia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,9 +48,10 @@ section{padding:96px 0}
 /* header */
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
-.brand b{font-size:1.2rem;font-weight:700;letter-spacing:-.02em}
-.brand span{font-size:.78rem;color:var(--muted)}
+.brand{position:relative;display:block;flex:none;width:clamp(132px,16vw,172px);aspect-ratio:4.63;overflow:hidden}
+.brand img{display:block;position:absolute;width:129%;max-width:none;height:auto;left:-15%;top:50%;transform:translateY(-53%)}
+:root[data-theme="dark"] .brand img{filter:brightness(0) invert(1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand img{filter:brightness(0) invert(1)}}
 nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
 nav a{text-decoration:none;font-weight:500;color:var(--muted);padding:6px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
 nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
@@ -128,16 +129,20 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
 .person img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 24%;border-radius:14px;background:var(--surface)}
 .person h3{font-size:1.16rem;margin:0 0 3px}
 .person .role{display:block;color:var(--accent);font-size:.88rem;font-weight:700;margin-bottom:5px}
-.person p,.p-who .loc{color:var(--muted);font-size:.95rem}
+.person p{color:var(--muted);font-size:.95rem}
 .p-cta{background:var(--panel);color:var(--panel-ink);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .p-cta h2{margin-bottom:12px}
 .p-cta>p{opacity:.85;margin-bottom:26px;max-width:37ch}
-.site-footer{background:#155E63;color:#fff;padding:36px 0;font-size:.95rem}
-.site-footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px 40px}
-.site-footer strong,.site-footer span{display:block}
-.site-footer strong{font-size:1.08rem;margin-bottom:4px}
-.site-footer address{display:flex;flex-wrap:wrap;gap:12px 26px;font-style:normal}
-.site-footer a{color:inherit;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.site-footer{background:#155E63;color:#fff;padding:48px 0 24px}
+.footer-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px 40px;padding-bottom:32px}
+.footer-brand strong{display:block;font-size:clamp(1.35rem,3vw,1.85rem);letter-spacing:-.035em}
+.footer-brand span{display:block;margin-top:4px;color:#e0efef;font-size:.95rem}
+.footer-contact{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#fff;border:1px solid #a8c9ca;border-radius:999px;padding:11px 17px;font-weight:600}
+.footer-contact:hover,.footer-contact:focus-visible{background:#fff;color:#155E63}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px 28px;border-top:1px solid #6a9a9d;padding-top:20px;color:#e0efef;font-size:.88rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+.footer-links a{color:inherit;text-underline-offset:4px}
+@media (max-width:520px){.site-footer{padding-top:32px}.footer-main{padding-bottom:24px}.footer-contact{min-height:44px}}
 
 /* reveal (um único movimento de entrada no hero) */
 .hero .wrap>*{animation:in .7s both}
@@ -171,7 +176,7 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#inicio" aria-label="Traço Nítido, Estúdio Digital"><b>Traço Nítido</b><span>Estúdio Digital</span></a>
+    <a class="brand" href="#inicio"><img src="/assets/traco-nitido-logo.png" width="2172" height="724" alt="Traço Nítido · Estúdio Digital"></a>
     <nav id="nav" aria-label="Principal">
       <ul>
         <li><a href="#trabalhos">Trabalhos</a></li>
@@ -195,7 +200,7 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
       <h1>Seu trabalho, bem apresentado.</h1>
       <p class="lead">Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular.</p>
       <a class="btn" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Conversar no WhatsApp</a>
-      <small>Para clínicas e empresas de serviços em Goiânia e região.</small>
+      <small>Para clínicas e empresas de serviços de todo o Brasil.</small>
     </div>
     <div>
       <div class="frame" aria-label="Prévia ilustrativa de uma página com três decisões de design anotadas">
@@ -311,7 +316,6 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
           <p>Planeja e acompanha campanhas no Instagram e no Facebook para levar sua oferta ao público certo, com clareza sobre o investimento e os resultados.</p>
         </div>
       </article>
-      <p class="loc">Goiânia e região</p>
     </div>
     <div class="panel p-cta">
       <h2>Vamos conversar sobre seu projeto?</h2>
@@ -324,10 +328,21 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
 
 <footer class="site-footer">
   <div class="wrap">
-    <div><strong>Traço Nítido · Estúdio Digital</strong><span>Goiânia, Goiás</span></div>
-    <address aria-label="Contato comercial">
-      <a href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">WhatsApp (62) 99903-6078</a>
-    </address>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <strong>Traço Nítido</strong>
+        <span>Estúdio digital · Webdesign, SEO e Meta Ads</span>
+      </div>
+      <a class="footer-contact" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">WhatsApp <span>(62) 99903-6078</span> <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="footer-bottom">
+      <span>Atendimento em todo o Brasil</span>
+      <div class="footer-links" aria-label="Links do rodapé">
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#inicio">Voltar ao topo</a>
+      </div>
+    </div>
   </div>
 </footer>
 
