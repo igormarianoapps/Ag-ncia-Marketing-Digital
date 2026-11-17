@@ -1,43 +1,38 @@
-const limits = { name: 100, company: 160, email: 254, phone: 30, message: 2000 };
+const limits = { name: 100, company: 160, email: 254, phone: 16, message: 2000 };
+const leadEndpoint = "https://iqslhvedtjcojcgnlfah.supabase.co/functions/v1/contact-lead";
 
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
-  const { CONTACT_EMAIL, CONTACT_FROM_EMAIL, RESEND_API_KEY } = process.env;
-  const available = Boolean(CONTACT_EMAIL && CONTACT_FROM_EMAIL && RESEND_API_KEY);
+  const secret = process.env.SUPABASE_LEAD_TOKEN;
 
-  if (req.method === "GET") return res.status(200).json({ available });
+  if (req.method === "GET") return res.status(200).json({ available: Boolean(secret) });
   if (req.method !== "POST") {
     res.setHeader("Allow", "GET, POST");
     return res.status(405).json({ error: "Método inválido." });
   }
-  if (!available) return res.status(503).json({ error: "Envio por e-mail indisponível. Fale com a gente pelo WhatsApp." });
+  if (!secret) return res.status(503).json({ error: "O formulário está indisponível. Fale com a gente pelo WhatsApp." });
+  if (!/^application\/json(?:\s*;|$)/i.test(req.headers["content-type"] ?? "")) {
+    return res.status(415).json({ error: "Formato de envio inválido." });
+  }
 
   const data = Object.fromEntries(Object.entries(limits).map(([key]) => [
     key, typeof req.body?.[key] === "string" ? req.body[key].trim() : ""
   ]));
-  const valid = Object.entries(limits).every(([key, limit]) => data[key] && data[key].length <= limit)
+  const valid = Object.entries(limits).every(([key, max]) => data[key] && data[key].length <= max)
     && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)
-    && /^[+()\d\s.-]+$/.test(data.phone)
-    && data.phone.replace(/\D/g, "").length >= 8;
+    && /^\([0-9]{2}\) [0-9]\.[0-9]{4}-[0-9]{4}$/.test(data.phone);
   if (!valid) return res.status(400).json({ error: "Confira os campos e tente novamente." });
 
-  const { name, company, email, phone, message } = data;
   try {
-    const response = await fetch("https://api.resend.com/emails", {
+    const saved = await fetch(leadEndpoint, {
       method: "POST",
-      headers: { Authorization: "Bearer " + RESEND_API_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: CONTACT_FROM_EMAIL,
-        to: [CONTACT_EMAIL],
-        reply_to: email,
-        subject: "Novo contato pelo site da Traço Nítido",
-        text: `Nome: ${name}\nEmpresa: ${company}\nE-mail: ${email}\nTelefone: ${phone}\n\nMensagem:\n${message}`
-      }),
+      headers: { "x-contact-token": secret, "Content-Type": "application/json" },
+      body: JSON.stringify(data),
       signal: AbortSignal.timeout(8000)
     });
-    if (response.ok) return res.status(200).json({ sent: true });
+    if (saved.ok) return res.status(201).json({ saved: true });
   } catch {
-    // The browser keeps the form so the visitor can try again.
+    // The form retains the submitted fields after a failed request.
   }
-  return res.status(502).json({ error: "Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp." });
+  return res.status(502).json({ error: "Não foi possível registrar a mensagem. Tente novamente ou fale pelo WhatsApp." });
 };

@@ -470,7 +470,7 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
           <label>Nome <input name="name" autocomplete="name" maxlength="100" required></label>
           <label>Nome da empresa <input name="company" autocomplete="organization" maxlength="160" required></label>
           <label>E-mail <input name="email" type="email" autocomplete="email" maxlength="254" required></label>
-          <label>Telefone / WhatsApp <input name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(99) 9.9999-9999" maxlength="15" pattern="\([0-9]{2}\) [0-9]\.[0-9]{4}-[0-9]{4}" title="Use o formato (99) 9.9999-9999" required></label>
+          <label>Telefone / WhatsApp <input name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(99) 9.9999-9999" maxlength="16" pattern="\([0-9]{2}\) [0-9]\.[0-9]{4}-[0-9]{4}" title="Use o formato (99) 9.9999-9999" required></label>
         </div>
         <label>Como podemos ajudar? <textarea name="message" maxlength="2000" placeholder="Conte brevemente o que sua empresa precisa." required></textarea></label>
         <button class="btn light" type="submit">Enviar mensagem</button>
@@ -478,7 +478,7 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
         <p class="lead-note">Prefere conversar agora? <a href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Chame no WhatsApp</a>.</p>
       </form>
       <div id="lead-followup" class="lead-followup" hidden>
-        <h3 id="lead-confirmation" tabindex="-1">Mensagem enviada. Obrigado pelo contato!</h3>
+        <h3 id="lead-confirmation" tabindex="-1">Recebemos seu contato. Obrigado!</h3>
         <p id="lead-question">Você quer continuar a conversa pelo WhatsApp?</p>
         <div id="lead-followup-actions" class="lead-followup-actions">
           <a class="btn light" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F">Sim, falar no WhatsApp</a>
@@ -598,7 +598,7 @@ fetch(lead.action, { cache: "no-store" }).then(async function (response) {
   const settings = await response.json();
   if (!settings.available) {
     leadButton.disabled = true;
-    showLeadStatus("O envio por e-mail será disponibilizado em breve. Por enquanto, fale com a gente pelo WhatsApp.");
+    showLeadStatus("O formulário está indisponível. Por enquanto, fale com a gente pelo WhatsApp.");
   }
 }).catch(function () {});
 
@@ -613,7 +613,7 @@ lead.addEventListener("submit", async function (event) {
       body: JSON.stringify(Object.fromEntries(new FormData(lead)))
     });
     const result = await response.json();
-    if (response.ok && result.sent) {
+    if (response.ok && result.saved) {
       lead.reset();
       lead.hidden = true;
       leadFollowup.hidden = false;
