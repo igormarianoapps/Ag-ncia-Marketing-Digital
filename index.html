@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Traço Nítido · Estúdio Digital</title>
+<meta name="description" content="Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular. Goiânia e região.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F6F2; --surface:#FFFFFF; --ink:#1C2328; --muted:#56616A; --line:#DEDCD3;
+  --accent:#155E63; --accent-ink:#FFFFFF; --tint:#E6EFEE; --panel:#1C2328; --panel-ink:#F7F6F2;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14191C; --surface:#1B2226; --ink:#EEF0EC; --muted:#A2ADB3; --line:#2C363B;
+    --accent:#2B8A90; --accent-ink:#FFFFFF; --tint:#1A2C2E; --panel:#0E1315; --panel-ink:#EEF0EC; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14191C; --surface:#1B2226; --ink:#EEF0EC; --muted:#A2ADB3; --line:#2C363B;
+  --accent:#2B8A90; --accent-ink:#FFFFFF; --tint:#1A2C2E; --panel:#0E1315; --panel-ink:#EEF0EC; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{line-height:1.08;letter-spacing:-.02em;margin:0;font-weight:600}
+h1{font-size:clamp(2.6rem,6.4vw,4.9rem);letter-spacing:-.035em}
+h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+h3{font-size:1.2rem;letter-spacing:-.01em}
+p{margin:0}
+.lead{font-size:1.2rem;color:var(--muted);max-width:34ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:var(--accent-ink);padding:15px 26px;border-radius:999px;font-weight:600;text-decoration:none;border:0;font:inherit;font-weight:600;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -8px var(--accent)}
+.btn.sm{padding:10px 20px;font-size:.95rem}
+.btn.light{background:var(--panel-ink);color:var(--panel)}
+section{padding:96px 0}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
+.brand b{font-size:1.2rem;font-weight:700;letter-spacing:-.02em}
+.brand span{font-size:.78rem;color:var(--muted)}
+nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:500;color:var(--muted);padding:6px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);width:44px;height:44px;border-radius:12px;cursor:pointer}
+.bar .btn{white-space:nowrap}
+
+/* hero */
+.hero{padding:72px 0 96px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero .lead{margin:28px 0 36px}
+.hero small{display:block;margin-top:22px;color:var(--muted);font-size:.95rem}
+.frame{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -30px rgba(21,94,99,.35);overflow:hidden}
+.frame .top{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.frame .top i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.frame .top em{margin-left:10px;flex:1;font-style:normal;font-size:.78rem;color:var(--muted);background:var(--bg);border-radius:999px;padding:3px 12px}
+.shot{position:relative;padding:26px 26px 30px}
+.shot .s-nav{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:26px}
+.shot .s-h{font-size:1.55rem;font-weight:600;letter-spacing:-.02em;line-height:1.15;max-width:15ch}
+.shot .s-p{font-size:.85rem;color:var(--muted);margin:10px 0 18px;max-width:30ch}
+.shot .s-b{display:inline-block;background:var(--accent);color:var(--accent-ink);font-size:.82rem;font-weight:600;padding:9px 16px;border-radius:999px}
+.shot .s-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.shot .s-cards div{height:54px;border-radius:10px;background:var(--tint)}
+.pin{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);border:0;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 0 var(--accent);animation:pulse 2.6s 1s 2}
+.pin[aria-expanded="true"]{background:var(--accent);color:var(--accent-ink);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(21,94,99,.55)}100%{box-shadow:0 0 0 16px rgba(21,94,99,0)}}
+.note{border-top:1px solid var(--line);padding:16px 22px;background:var(--bg);min-height:92px}
+.note b{display:block;font-size:.95rem}
+.note p{font-size:.92rem;color:var(--muted);margin-top:4px}
+.cap{font-size:.8rem;color:var(--muted);margin-top:12px}
+
+/* trabalhos */
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.head p{color:var(--muted);max-width:40ch}
+.work{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding:40px 0;border-top:1px solid var(--line)}
+.work .vis{background:var(--tint);border-radius:20px;padding:36px 36px 0;overflow:hidden}
+.work .vis .frame{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0}
+.work .txt h3{font-size:1.8rem;margin-bottom:12px}
+.work .txt p{color:var(--muted);margin-bottom:14px;max-width:44ch}
+.tag{display:inline-block;font-size:.82rem;font-weight:600;color:var(--accent);background:var(--tint);padding:4px 12px;border-radius:999px;margin-bottom:16px}
+.work.alt{grid-template-columns:1fr 1.25fr}
+.work.alt .vis{order:2;padding:0;display:grid;place-items:center;min-height:240px;background:var(--surface);border:1px dashed var(--line)}
+.work.alt .vis span{color:var(--muted);font-size:.95rem;padding:24px;text-align:center}
+.link{font-weight:600;color:var(--accent);text-underline-offset:4px}
+.s-wide .s-h{max-width:20ch}
+.s-split{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;margin-top:22px}
+.s-split div{border-radius:10px;background:var(--tint);height:92px}
+
+/* serviços */
+#servicos{background:var(--surface);border-block:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.col{padding:8px 36px 8px 0;margin-right:36px;border-right:1px solid var(--line)}
+.col:last-child{border:0;margin:0;padding-right:0}
+.col h3{margin-bottom:12px}
+.col p{color:var(--muted);margin-bottom:16px}
+.col .meta{font-size:.9rem;font-weight:600;color:var(--accent)}
+
+/* processo */
+.steps{background:var(--panel);color:var(--panel-ink);padding:96px 0}
+.steps h2{margin-bottom:48px;max-width:16ch}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;margin:0;padding:0;counter-reset:s}
+.flow li{counter-increment:s;padding:0 28px 0 0;position:relative}
+.flow li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--panel-ink) 50%,transparent);font-weight:600;margin-bottom:18px}
+.flow li::after{content:"";position:absolute;top:19px;left:50px;right:12px;height:1px;background:color-mix(in srgb,var(--panel-ink) 25%,transparent)}
+.flow li:last-child::after{display:none}
+.flow h3{margin-bottom:8px}
+.flow p{opacity:.75;font-size:.97rem}
+.steps .foot{margin-top:48px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--panel-ink) 20%,transparent);opacity:.85;max-width:62ch}
+
+/* contato */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:20px}
+.panel{border-radius:24px;padding:44px}
+.p-who{background:var(--tint)}
+.p-who h2{margin-bottom:28px;font-size:2rem}
+.person{padding:16px 0;border-top:1px solid color-mix(in srgb,var(--ink) 16%,transparent)}
+.person b{display:block;font-size:1.1rem}
+.person span{color:var(--muted)}
+.p-who .loc{margin-top:18px;color:var(--muted)}
+.p-cta{background:var(--panel);color:var(--panel-ink)}
+.p-cta h2{margin-bottom:12px}
+.p-cta>p{opacity:.75;margin-bottom:26px}
+form{display:grid;gap:14px}
+label{font-size:.9rem;font-weight:500;display:grid;gap:6px}
+input,textarea{font:inherit;color:inherit;background:transparent;border:1px solid color-mix(in srgb,var(--panel-ink) 30%,transparent);border-radius:12px;padding:12px 14px;width:100%}
+input::placeholder,textarea::placeholder{color:color-mix(in srgb,var(--panel-ink) 45%,transparent)}
+textarea{min-height:96px;resize:vertical}
+form .btn{justify-self:start;margin-top:6px}
+.ok{display:none;margin-top:14px;font-size:.92rem;opacity:.85}
+footer{padding:36px 0 48px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* reveal (um único movimento de entrada no hero) */
+.hero .wrap>*{animation:in .7s both}
+.hero .wrap>*:nth-child(2){animation-delay:.12s}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@media (max-width:900px){
+  section{padding:72px 0}
+  .hero{padding:40px 0 72px}
+  .hero .wrap,.work,.work.alt,.contact{grid-template-columns:1fr;gap:36px}
+  .work.alt .vis{order:0}
+  .cols{grid-template-columns:1fr;gap:40px}
+  .col{border:0;margin:0;padding:0 0 40px;border-bottom:1px solid var(--line)}
+  .col:last-child{border:0;padding:0}
+  .flow{grid-template-columns:1fr 1fr;row-gap:40px}
+  .flow li:nth-child(2)::after{display:none}
+  .menu{display:grid;place-items:center}
+  .bar .btn{display:none}
+  nav{position:absolute;top:68px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:12px 24px 24px}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:6px}
+  nav a{display:block;padding:12px 0;font-size:1.1rem}
+  .work .vis{padding:22px 22px 0}
+  .panel{padding:32px 26px}
+}
+@media (max-width:520px){.flow{grid-template-columns:1fr}.flow li::after{display:none}.wrap{padding:0 20px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" aria-label="Traço Nítido, Estúdio Digital"><b>Traço Nítido</b><span>Estúdio Digital</span></a>
+    <nav id="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#trabalhos">Trabalhos</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="btn sm" href="#contato">Conversar sobre meu site</a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="inicio">
+<!-- ABERTURA -->
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Seu trabalho, bem apresentado.</h1>
+      <p class="lead">Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular.</p>
+      <a class="btn" href="#contato">Conversar sobre meu site</a>
+      <small>Para clínicas e empresas de serviços em Goiânia e região.</small>
+    </div>
+    <div>
+      <div class="frame" aria-label="Prévia ilustrativa de uma página com três decisões de design anotadas">
+        <div class="top"><i></i><i></i><i></i><em>suaempresa.com.br</em></div>
+        <div class="shot">
+          <div class="s-nav"><span>Sua empresa</span><span>Serviços · Equipe · Contato</span></div>
+          <div class="s-h">O tratamento que você procura, explicado.</div>
+          <div class="s-p">Veja como funciona, conheça a equipe e agende pelo celular.</div>
+          <span class="s-b">Agendar pelo WhatsApp</span>
+          <div class="s-cards"><div></div><div></div><div></div></div>
+          <button class="pin" style="top:22px;left:46%" data-i="0" aria-expanded="true" aria-label="Decisão 1">1</button>
+          <button class="pin" style="top:106px;right:22%" data-i="1" aria-expanded="false" aria-label="Decisão 2">2</button>
+          <button class="pin" style="bottom:22px;left:24px" data-i="2" aria-expanded="false" aria-label="Decisão 3">3</button>
+        </div>
+        <div class="note" aria-live="polite"><b id="nt"></b><p id="nd"></p></div>
+      </div>
+      <p class="cap">Prévia ilustrativa. Toque nos números para ver o que cada decisão resolve.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TRABALHOS -->
+<section id="trabalhos">
+  <div class="wrap">
+    <div class="head">
+      <h2>Trabalhos selecionados</h2>
+      <p>Projetos reais, com o papel que tivemos em cada um.</p>
+    </div>
+
+    <article class="work">
+      <div class="vis">
+        <div class="frame s-wide" aria-label="Prévia ilustrativa">
+          <div class="top"><i></i><i></i><i></i><em>prévia ilustrativa</em></div>
+          <div class="shot">
+            <div class="s-nav"><span>Marca</span><span>Coleção · Sobre · Contato</span></div>
+            <div class="s-h">Uma página que conduz até o contato.</div>
+            <div class="s-split"><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="txt">
+        <span class="tag">Webdesign e UX/UI</span>
+        <h3>Valena</h3>
+        <p>Demonstração de webdesign e UX/UI desenvolvida pelo estúdio.</p>
+        <p><!-- TROCAR: decisão de design verificável + captura real do Valena -->A captura real e a principal decisão de design entram aqui.</p>
+      </div>
+    </article>
+
+    <article class="work alt">
+      <div class="vis"><span><!-- TROCAR: captura do segundo projeto autorizado -->Imagem do projeto entra aqui</span></div>
+      <div class="txt">
+        <span class="tag">Design e implementação</span>
+        <h3>Portfólio do Igor</h3>
+        <p>Trabalhos de design e implementação, com o papel de cada projeto indicado.</p>
+        <a class="link" href="https://igormariano.vercel.app" target="_blank" rel="noopener">Ver portfólio</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="head"><h2>Como podemos ajudar</h2><p>Você contrata só o que faz sentido para o seu momento.</p></div>
+    <div class="cols">
+      <div class="col">
+        <h3>Sites e landing pages</h3>
+        <p>Páginas feitas sob medida para apresentar seus serviços e facilitar agendamentos ou pedidos de orçamento, com leitura confortável no celular.</p>
+        <span class="meta">Escopo fechado, sem mensalidade obrigatória</span>
+      </div>
+      <div class="col">
+        <h3>SEO técnico</h3>
+        <p>A base técnica para o Google entender o seu site já vem incluída. Se fizer sentido ir além, o escopo é definido depois de um diagnóstico.</p>
+        <span class="meta">Incluído no projeto</span>
+      </div>
+      <div class="col">
+        <h3>Gestão de Meta Ads</h3>
+        <p>Anúncios no Facebook e Instagram, com relatório mensal. É um serviço à parte, com verba de mídia separada do honorário.</p>
+        <span class="meta">Contratação independente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="steps" id="como-funciona">
+  <div class="wrap">
+    <h2>Como funciona</h2>
+    <ol class="flow">
+      <li><h3>Conversa inicial</h3><p>Entendemos o seu serviço, o seu público e o que você quer que a pessoa faça ao chegar.</p></li>
+      <li><h3>Proposta</h3><p>Você recebe escopo, prazo e valores por escrito, antes de qualquer compromisso.</p></li>
+      <li><h3>Criação e revisão</h3><p>Desenhamos, construímos e ajustamos junto com você.</p></li>
+      <li><h3>Publicação e entrega</h3><p>Colocamos no ar e entregamos tudo com os acessos combinados.</p></li>
+    </ol>
+    <p class="foot">A manutenção é opcional. Quando precisar de mudanças depois da entrega, você contrata alterações avulsas, sob demanda.</p>
+  </div>
+</section>
+
+<!-- QUEM ESTÁ POR TRÁS + CONTATO -->
+<section id="contato">
+  <div class="wrap contact">
+    <div class="panel p-who">
+      <h2>Quem está por trás</h2>
+      <div class="person"><b>Igor</b><span>Webdesign e SEO</span></div>
+      <div class="person"><b>Brenda</b><span>Meta Ads</span></div>
+      <p class="loc">Goiânia e região.</p>
+    </div>
+    <div class="panel p-cta">
+      <h2>Vamos conversar sobre seu site?</h2>
+      <p>Conte em poucas linhas o que a sua empresa faz. Prepare sua mensagem para conversar com Igor pelo LinkedIn.</p>
+      <form id="form">
+        <label>Seu nome<input name="nome" required autocomplete="name" placeholder="Nome e sobrenome"></label>
+        <label>Empresa ou site atual<input name="empresa" autocomplete="organization" placeholder="Nome da empresa ou endereço do site"></label>
+        <label>O que você precisa?<textarea name="msg" placeholder="Ex.: uma página para explicar um tratamento e facilitar o agendamento"></textarea></label>
+        <button class="btn light" type="submit">Conversar sobre meu site</button>
+        <p class="ok" id="ok" role="status">Mensagem pronta para copiar e enviar. <a href="https://www.linkedin.com/in/uxigormariano/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Abrir LinkedIn do Igor</a>.</p>
+        <textarea id="contact-draft" aria-label="Mensagem pronta para copiar" readonly hidden></textarea>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Traço Nítido · Estúdio Digital</span><span>Goiânia, Goiás</span></div>
+</footer>
+
+<script>
+var pins = document.querySelectorAll(".pin");
+var notes = [
+  ["1. Título que diz o que a empresa faz", "Quem chega entende o serviço em segundos, sem precisar rolar a página."],
+  ["2. Botão de agendamento sempre visível", "O caminho até o contato está na primeira tela, no tamanho certo para o dedo."],
+  ["3. Informações em blocos curtos", "Equipe, serviços e dúvidas ficam organizados e fáceis de percorrer no celular."]
+];
+function show(i){
+  pins.forEach(function(p,k){ p.setAttribute("aria-expanded", k===i ? "true" : "false"); });
+  document.getElementById("nt").textContent = notes[i][0];
+  document.getElementById("nd").textContent = notes[i][1];
+}
+pins.forEach(function(p){ p.addEventListener("click", function(){ show(+p.dataset.i); }); });
+show(0);
+
+var nav = document.getElementById("nav"), menu = document.getElementById("menu");
+menu.addEventListener("click", function(){
+  var o = nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", o);
+});
+nav.addEventListener("click", function(e){ if(e.target.tagName === "A"){ nav.classList.remove("open"); menu.setAttribute("aria-expanded","false"); }});
+
+var links = document.querySelectorAll("nav a");
+if ("IntersectionObserver" in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); });
+      }
+    });
+  }, {rootMargin:"-45% 0px -50% 0px"});
+  ["trabalhos","servicos","como-funciona","contato"].forEach(function(id){ io.observe(document.getElementById(id)); });
+}
+
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+  var f = e.target;
+  var body = "Nome: " + f.nome.value + "\nEmpresa/site: " + f.empresa.value + "\n\n" + f.msg.value;
+  var draft = document.getElementById("contact-draft");
+  draft.value = body;
+  draft.hidden = false;
+  draft.focus();
+  draft.select();
+  document.getElementById("ok").style.display = "block";
+});
+</script>
+</body>
+</html>
