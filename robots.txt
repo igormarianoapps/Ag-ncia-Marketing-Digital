@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://traco-nitido.vercel.app/sitemap.xml
+Sitemap: https://traconitido.vercel.app/sitemap.xml
