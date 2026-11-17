@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Traço Nítido · Estúdio Digital</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 <meta name="description" content="Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular. Atendimento em todo o Brasil, com base em Goiânia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,16 +134,27 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
 .p-cta{background:var(--panel);color:var(--panel-ink);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .p-cta h2{margin-bottom:12px}
 .p-cta>p{opacity:.85;margin-bottom:26px;max-width:37ch}
-.site-footer{background:#155E63;color:#fff;padding:48px 0 24px}
-.footer-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px 40px;padding-bottom:32px}
+.lead-form{width:100%;display:grid;gap:13px}
+.lead-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.lead-form label{display:grid;gap:5px;font-size:.9rem;font-weight:600}
+.lead-form input,.lead-form textarea{width:100%;min-width:0;padding:10px 12px;border:1px solid #68747b;border-radius:10px;background:#252e33;color:#fff;font:inherit}
+.lead-form input:focus-visible,.lead-form textarea:focus-visible{outline:2px solid #b3e0e1;outline-offset:2px}
+.lead-form textarea{min-height:80px;resize:vertical}
+.lead-form button{justify-self:start}
+.lead-form button:disabled{opacity:.6;cursor:not-allowed}
+.lead-note,.lead-status{font-size:.85rem;color:#c8d2d5}
+.lead-note a,.lead-status a{color:inherit;text-underline-offset:3px}
+@media(max-width:520px){.lead-grid{grid-template-columns:1fr}}
+.site-footer{background:#1C2328;color:#fff;padding:24px 0 14px}
+.footer-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;padding-bottom:14px}
 .footer-brand strong{display:block;font-size:clamp(1.35rem,3vw,1.85rem);letter-spacing:-.035em}
 .footer-brand span{display:block;margin-top:4px;color:#e0efef;font-size:.95rem}
-.footer-contact{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#fff;border:1px solid #a8c9ca;border-radius:999px;padding:11px 17px;font-weight:600}
-.footer-contact:hover,.footer-contact:focus-visible{background:#fff;color:#155E63}
-.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px 28px;border-top:1px solid #6a9a9d;padding-top:20px;color:#e0efef;font-size:.88rem}
+.footer-contact{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#e0efef;border:1px solid #68747b;border-radius:999px;padding:6px 11px;font-size:.82rem;font-weight:500}
+.footer-contact:hover,.footer-contact:focus-visible{background:#fff;color:#1C2328}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;border-top:1px solid #465158;padding-top:10px;color:#e0efef;font-size:.88rem}
 .footer-links{display:flex;flex-wrap:wrap;gap:8px 20px}
 .footer-links a{color:inherit;text-underline-offset:4px}
-@media (max-width:520px){.site-footer{padding-top:32px}.footer-main{padding-bottom:24px}.footer-contact{min-height:44px}}
+@media (max-width:520px){.site-footer{padding-top:20px}.footer-contact{min-height:32px}}
 
 /* reveal (um único movimento de entrada no hero) */
 .hero .wrap>*{animation:in .7s both}
@@ -320,7 +332,18 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
     <div class="panel p-cta">
       <h2>Vamos conversar sobre seu projeto?</h2>
       <p>Conte o que sua empresa precisa. A gente conversa sobre o melhor ponto de partida.</p>
-      <a class="btn light" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Conversar no WhatsApp</a>
+      <form class="lead-form" id="lead-form" action="/api/contact" method="post">
+        <div class="lead-grid">
+          <label>Nome <input name="name" autocomplete="name" maxlength="100" required></label>
+          <label>Nome da empresa <input name="company" autocomplete="organization" maxlength="160" required></label>
+          <label>E-mail <input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+          <label>Telefone / WhatsApp <input name="phone" type="tel" autocomplete="tel" maxlength="30" required></label>
+        </div>
+        <label>Como podemos ajudar? <textarea name="message" maxlength="2000" placeholder="Conte brevemente o que sua empresa precisa." required></textarea></label>
+        <button class="btn light" type="submit">Enviar mensagem</button>
+        <p class="lead-status" id="lead-status" role="status" aria-live="polite" hidden></p>
+        <p class="lead-note">Prefere conversar agora? <a href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Chame no WhatsApp</a>.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -380,6 +403,48 @@ if ("IntersectionObserver" in window) {
   ["trabalhos","servicos","como-funciona","contato"].forEach(function(id){ io.observe(document.getElementById(id)); });
 }
 
+
+const lead = document.getElementById("lead-form");
+const leadStatus = document.getElementById("lead-status");
+const leadButton = lead.querySelector("button");
+
+function showLeadStatus(message) {
+  leadStatus.textContent = message;
+  leadStatus.hidden = false;
+}
+
+fetch(lead.action, { cache: "no-store" }).then(async function (response) {
+  if (!response.ok) return;
+  const settings = await response.json();
+  if (!settings.available) {
+    leadButton.disabled = true;
+    showLeadStatus("O envio por e-mail será disponibilizado em breve. Por enquanto, fale com a gente pelo WhatsApp.");
+  }
+}).catch(function () {});
+
+lead.addEventListener("submit", async function (event) {
+  event.preventDefault();
+  leadButton.disabled = true;
+  showLeadStatus("Enviando…");
+  try {
+    const response = await fetch(lead.action, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(Object.fromEntries(new FormData(lead)))
+    });
+    const result = await response.json();
+    if (response.ok && result.sent) {
+      lead.reset();
+      showLeadStatus("Mensagem enviada. Obrigado pelo contato!");
+    } else {
+      showLeadStatus(result.error || "Não foi possível enviar. Tente novamente ou fale pelo WhatsApp.");
+    }
+  } catch {
+    showLeadStatus("Não foi possível enviar. Tente novamente ou fale pelo WhatsApp.");
+  } finally {
+    leadButton.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
