@@ -122,23 +122,22 @@ nav a:hover,nav a.on{color:var(--ink);border-color:var(--accent)}
 .contact{display:grid;grid-template-columns:1fr 1.1fr;gap:20px}
 .panel{border-radius:24px;padding:44px}
 .p-who{background:var(--tint)}
-.p-who h2{margin-bottom:28px;font-size:2rem}
-.person{padding:16px 0;border-top:1px solid color-mix(in srgb,var(--ink) 16%,transparent)}
-.person b{display:block;font-size:1.1rem}
-.person span{color:var(--muted)}
-.p-who .loc{margin-top:18px;color:var(--muted)}
-.p-cta{background:var(--panel);color:var(--panel-ink)}
+.p-who h2{margin-bottom:12px;font-size:2rem}
+.p-who .intro{color:var(--muted);margin-bottom:24px}
+.person{display:grid;grid-template-columns:clamp(76px,10vw,112px) minmax(0,1fr);gap:18px;align-items:start;padding:20px 0;border-top:1px solid color-mix(in srgb,var(--ink) 16%,transparent)}
+.person img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 24%;border-radius:14px;background:var(--surface)}
+.person h3{font-size:1.16rem;margin:0 0 3px}
+.person .role{display:block;color:var(--accent);font-size:.88rem;font-weight:700;margin-bottom:5px}
+.person p,.p-who .loc{color:var(--muted);font-size:.95rem}
+.p-cta{background:var(--panel);color:var(--panel-ink);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .p-cta h2{margin-bottom:12px}
-.p-cta>p{opacity:.75;margin-bottom:26px}
-form{display:grid;gap:14px}
-label{font-size:.9rem;font-weight:500;display:grid;gap:6px}
-input,textarea{font:inherit;color:inherit;background:transparent;border:1px solid color-mix(in srgb,var(--panel-ink) 30%,transparent);border-radius:12px;padding:12px 14px;width:100%}
-input::placeholder,textarea::placeholder{color:color-mix(in srgb,var(--panel-ink) 45%,transparent)}
-textarea{min-height:96px;resize:vertical}
-form .btn{justify-self:start;margin-top:6px}
-.ok{display:none;margin-top:14px;font-size:.92rem;opacity:.85}
-footer{padding:36px 0 48px;color:var(--muted);font-size:.9rem}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.p-cta>p{opacity:.85;margin-bottom:26px;max-width:37ch}
+.site-footer{background:#155E63;color:#fff;padding:36px 0;font-size:.95rem}
+.site-footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px 40px}
+.site-footer strong,.site-footer span{display:block}
+.site-footer strong{font-size:1.08rem;margin-bottom:4px}
+.site-footer address{display:flex;flex-wrap:wrap;gap:12px 26px;font-style:normal}
+.site-footer a{color:inherit;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
 
 /* reveal (um único movimento de entrada no hero) */
 .hero .wrap>*{animation:in .7s both}
@@ -181,7 +180,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
-    <a class="btn sm" href="#contato">Conversar sobre meu site</a>
+    <a class="btn sm" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Conversar no WhatsApp</a>
     <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h14M3 14h14"/></svg>
     </button>
@@ -195,7 +194,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div>
       <h1>Seu trabalho, bem apresentado.</h1>
       <p class="lead">Criamos sites e landing pages que explicam seus serviços e facilitam o contato pelo celular.</p>
-      <a class="btn" href="#contato">Conversar sobre meu site</a>
+      <a class="btn" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Conversar no WhatsApp</a>
       <small>Para clínicas e empresas de serviços em Goiânia e região.</small>
     </div>
     <div>
@@ -234,7 +233,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <span class="tag">Webdesign e UX/UI</span>
         <h3>Valena</h3>
         <p>Demonstração de webdesign e UX/UI desenvolvida pelo estúdio.</p>
-        <a class="link" href="https://valenafit.vercel.app/" target="_blank" rel="noopener">Ver site do Valena</a>
+        <a class="link" href="https://valenafit.vercel.app/" target="_blank" rel="noopener">Ver site Valena</a>
       </div>
     </article>
 
@@ -244,9 +243,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </a>
       <div class="txt">
         <span class="tag">Design e implementação</span>
-        <h3>Portfólio do Igor</h3>
+        <h3>Portfólio de UX</h3>
         <p>Trabalhos de design e implementação, com o papel de cada projeto indicado.</p>
-        <a class="link" href="https://igormariano.vercel.app" target="_blank" rel="noopener">Ver portfólio</a>
+        <a class="link" href="https://igormariano.vercel.app" target="_blank" rel="noopener">Ver portfólio de UX</a>
       </div>
     </article>
   </div>
@@ -294,29 +293,42 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <section id="contato">
   <div class="wrap contact">
     <div class="panel p-who">
-      <h2>Quem está por trás</h2>
-      <div class="person"><b>Igor</b><span>Webdesign e SEO</span></div>
-      <div class="person"><b>Brenda</b><span>Meta Ads</span></div>
-      <p class="loc">Goiânia e região.</p>
+      <h2>Quem está por trás da Traço Nítido</h2>
+      <p class="intro">Do site à campanha, você fala direto com quem cuida do projeto.</p>
+      <article class="person">
+        <img src="/assets/igor.jpg" alt="Igor Mariano" width="112" height="112" loading="lazy" decoding="async">
+        <div>
+          <h3>Igor Mariano</h3>
+          <span class="role">Webdesign, UX e SEO</span>
+          <p>Cria sites e landing pages que apresentam seus serviços com clareza e facilitam o agendamento ou o pedido de orçamento, especialmente pelo celular.</p>
+        </div>
+      </article>
+      <article class="person">
+        <img src="/assets/brenda.png" alt="Brenda" width="112" height="112" loading="lazy" decoding="async">
+        <div>
+          <h3>Brenda</h3>
+          <span class="role">Gestão de Meta Ads</span>
+          <p>Planeja e acompanha campanhas no Instagram e no Facebook para levar sua oferta ao público certo, com clareza sobre o investimento e os resultados.</p>
+        </div>
+      </article>
+      <p class="loc">Goiânia e região</p>
     </div>
     <div class="panel p-cta">
-      <h2>Vamos conversar sobre seu site?</h2>
-      <p>Conte em poucas linhas o que a sua empresa faz. Prepare sua mensagem para conversar com Igor pelo LinkedIn.</p>
-      <form id="form">
-        <label>Seu nome<input name="nome" required autocomplete="name" placeholder="Nome e sobrenome"></label>
-        <label>Empresa ou site atual<input name="empresa" autocomplete="organization" placeholder="Nome da empresa ou endereço do site"></label>
-        <label>O que você precisa?<textarea name="msg" placeholder="Ex.: uma página para explicar um tratamento e facilitar o agendamento"></textarea></label>
-        <button class="btn light" type="submit">Conversar sobre meu site</button>
-        <p class="ok" id="ok" role="status">Mensagem pronta para copiar e enviar. <a href="https://www.linkedin.com/in/uxigormariano/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Abrir LinkedIn do Igor</a>.</p>
-        <textarea id="contact-draft" aria-label="Mensagem pronta para copiar" readonly hidden></textarea>
-      </form>
+      <h2>Vamos conversar sobre seu projeto?</h2>
+      <p>Conte o que sua empresa precisa. A gente conversa sobre o melhor ponto de partida.</p>
+      <a class="btn light" href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">Conversar no WhatsApp</a>
     </div>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap"><span>Traço Nítido · Estúdio Digital</span><span>Goiânia, Goiás</span></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div><strong>Traço Nítido · Estúdio Digital</strong><span>Goiânia, Goiás</span></div>
+    <address aria-label="Contato comercial">
+      <a href="https://wa.me/5562999036078?text=Ol%C3%A1%2C%20Tra%C3%A7o%20N%C3%ADtido!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20a%20minha%20empresa.%20Podemos%20falar%3F" target="_blank" rel="noopener">WhatsApp (62) 99903-6078</a>
+    </address>
+  </div>
 </footer>
 
 <script>
@@ -353,17 +365,6 @@ if ("IntersectionObserver" in window) {
   ["trabalhos","servicos","como-funciona","contato"].forEach(function(id){ io.observe(document.getElementById(id)); });
 }
 
-document.getElementById("form").addEventListener("submit", function(e){
-  e.preventDefault();
-  var f = e.target;
-  var body = "Nome: " + f.nome.value + "\nEmpresa/site: " + f.empresa.value + "\n\n" + f.msg.value;
-  var draft = document.getElementById("contact-draft");
-  draft.value = body;
-  draft.hidden = false;
-  draft.focus();
-  draft.select();
-  document.getElementById("ok").style.display = "block";
-});
 </script>
 </body>
 </html>
